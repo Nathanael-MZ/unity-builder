@@ -7,6 +7,12 @@ if [[ "$UNITY_SERIAL" = F* ]]; then
 fi
 
 #
+# Configure ssh
+#
+
+mkdir -m 700 -p ~/.ssh && echo "Host *" > ~/.ssh/config && echo " StrictHostKeyChecking no" >> ~/.ssh/config
+
+#
 # Prepare Android SDK, if needed
 # We do this here to ensure it has root permissions
 #

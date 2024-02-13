@@ -76,12 +76,6 @@ class Docker {
             --cpus=${dockerCpuLimit} \
             --memory=${dockerMemoryLimit} \
             ${sshAgent ? `--volume ${sshAgent}:/ssh-agent` : ''} \
-            ${
-              sshAgent && !sshPublicKeysDirectoryPath
-                ? '--volume /home/runner/.ssh/known_hosts:/root/.ssh/known_hosts:ro'
-                : ''
-            } \
-            ${sshPublicKeysDirectoryPath ? `--volume ${sshPublicKeysDirectoryPath}:/root/.ssh:ro` : ''} \
             ${entrypointBash ? `--entrypoint ${commandPrefix}` : ``} \
             ${image} \
             ${entrypointBash ? `-c` : `${commandPrefix} -c`} \
